@@ -1,6 +1,22 @@
 
 class DateTimeExt extends DateTime
 {
+	List months = 
+	[
+		'января',
+		'февраля',
+		'марта',
+		'апреля',
+		'мая',
+		'июня',
+		'июля',
+		'августа',
+		'сентября',
+		'октября',
+		'ноября',
+		'декаря'
+	];
+
 	DateTimeExt(int year,
 		[int month = 1,
 		int day = 1,
@@ -19,6 +35,7 @@ class DateTimeExt extends DateTime
 
 	String getYMD() => '$year-${add0(month)}-${add0(day)}';
 	String getDMY([String? sep]) => '${add0(day)}${sep ?? '-'}${add0(month)}${sep ?? '-'}$year';
+	String getDMonthY([String? sep]) => '${add0(day)}${sep ?? ' '}${months[month]}${sep ?? ' '}$year';
 	String getDM([String? sep]) => '${add0(day)}${sep ?? ' - '}${add0(month)}';
 
 	String getHMSM() => '${add0(hour)}:${add0(minute)}:${add0(second)}.${add00(millisecond)}';

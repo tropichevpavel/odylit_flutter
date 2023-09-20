@@ -43,18 +43,25 @@ class ContentView extends StatelessWidget
 			textAlign: TextAlign.center,
 			style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.bold)));
 
-	Widget? _drawDescription() => isFull && data.descr != null ?
+	Widget? _drawDescription() => data.descr != null ? isFull ?
 	LinkWell(
 		data.descr!,
 		textAlign: TextAlign.justify, style: TextStyle(fontSize: fontSize - 2, color: Colors.black),
 		linkStyle: TextStyle(fontSize: fontSize - 2, decoration: TextDecoration.underline, color: Colors.blue))
 
-	: null;
+	: data.img == null ?
+
+	Container(
+		margin: const EdgeInsets.only(bottom: 10),
+		child: Text(data.descr!, maxLines: 3, style: TextStyle(fontSize: fontSize - 2, color: const Color(0xFF515151)))
+	)
+
+	: null : null;
 
 	Widget _drawDate() =>
 	Container(
 		alignment: Alignment.centerRight,
-		child: Text(data.date.getDMY(), style: const TextStyle(color: Color(0xFF515151))));
+		child: Text(data.date.getDMonthY(), style: const TextStyle(color: Color(0xFF515151))));
 
 	Widget? _drawBtnMore() => isFull && data.link != null ?
 	Container(

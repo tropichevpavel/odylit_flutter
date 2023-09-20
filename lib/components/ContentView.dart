@@ -44,17 +44,18 @@ class ContentView extends StatelessWidget
 			style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.bold)));
 
 	Widget? _drawDescription() => data.descr != null ? isFull ?
-	LinkWell(
-		data.descr!,
-		textAlign: TextAlign.justify, style: TextStyle(fontSize: fontSize - 2, color: Colors.black),
-		linkStyle: TextStyle(fontSize: fontSize - 2, decoration: TextDecoration.underline, color: Colors.blue))
+	Container(
+		margin: const EdgeInsets.only(bottom: 10),
+		child: LinkWell(
+			data.descr!,
+			textAlign: TextAlign.justify, style: TextStyle(fontSize: fontSize - 2, color: Colors.black),
+			linkStyle: TextStyle(fontSize: fontSize - 2, decoration: TextDecoration.underline, color: Colors.blue)))
 
 	: data.img == null ?
 
 	Container(
 		margin: const EdgeInsets.only(bottom: 10),
-		child: Text(data.descr!, maxLines: 3, style: TextStyle(fontSize: fontSize - 2, color: const Color(0xFF515151)))
-	)
+		child: Text(data.descr!, maxLines: 3, style: TextStyle(fontSize: fontSize - 2, color: const Color(0xFF515151))))
 
 	: null : null;
 
@@ -66,6 +67,7 @@ class ContentView extends StatelessWidget
 	Widget? _drawBtnMore() => isFull && data.link != null ?
 	Container(
 		alignment: Alignment.center,
+		margin: const EdgeInsets.only(top: 5),
 		child: ElevatedButton(
 			onPressed: () async => await launchUrl(Uri.parse(data.link!)),
 			child: const Text('Подробнее')))

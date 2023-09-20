@@ -7,7 +7,11 @@ abstract class core
 {
 	static Map<String, List<Content>> categoryContent = {};
 
-	static getContentCards(String category) async => convertData((await api.getContentCards(category))['data'], (j) => Content.fromJSON(j)).cast<Content>();
+	static _getContentCards(String cat) async => convertData((await api.getContentCards(cat))['data'], (j) => Content.fromJSON(j)).cast<Content>();
+
+	static getContentCards(String cat, { bool refresh = false }) async => refresh || categoryContent[cat] == null ? categoryContent[cat] = await _getContentCards(cat) : categoryContent[cat];
+
+	static preloadContentCards(List<String> cats) => cats.forEach((cat) => cat != 'main' ? getContentCards(cat) : null);
 
 	static handler (Map<String, dynamic> response, Function onSuccess, [Function? onError])
 	{

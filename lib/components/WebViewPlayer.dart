@@ -45,8 +45,8 @@ class _WebViewPlayerState extends State<WebViewPlayer>
 
 		if (controller.platform is AndroidWebViewController)
 		{
-			// AndroidWebViewController.enableDebugging(true);
-			(controller.platform as AndroidWebViewController).setMediaPlaybackRequiresUserGesture(false);
+			AndroidWebViewController.enableDebugging(true);
+			(controller.platform as AndroidWebViewController).setMediaPlaybackRequiresUserGesture(true);
 		}
 
 		_controller = controller;

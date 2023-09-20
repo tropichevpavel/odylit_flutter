@@ -47,6 +47,8 @@ dependencies:
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
+  flutter_launcher_icons:
+  flutter_native_splash:
   flutter_test:
     sdk: flutter
 
@@ -70,7 +72,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/
+    - assets/img/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -97,3 +99,18 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+# flutter pub run flutter_launcher_icons:min
+flutter_launcher_icons:
+  image_path: 'assets/img/logo.png'
+  android: true
+  min_sdk_android: 26
+  ios: true
+  macos:
+    generate: true
+  remove_alpha_ios: true
+
+# flutter pub run flutter_native_splash:create
+flutter_native_splash:
+  image: assets/img/logo.png
+  color: "FFFFFF"

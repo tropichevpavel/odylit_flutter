@@ -4,6 +4,7 @@ import 'ContentCard.dart';
 import '../entities/Content.dart';
 
 import '../core.dart';
+import 'ContentListHeader.dart';
 
 class ContentList extends StatefulWidget
 {
@@ -19,27 +20,20 @@ class _ContentListState extends State<ContentList>
 	List<Content> _cards = [];
 
 	@override
-	initState()
-	{
-		super.initState();
-		_cards = core.categoryContent[widget.category] ?? [];
-		if (_cards.isEmpty) _loadContentCards();
-	}
+	initState() { super.initState(); _loadContentCards(); }
 
-	_loadContentCards() async
+	_loadContentCards({bool refresh = false}) async
 	{
-		_cards = await core.getContentCards(widget.category);
-		core.categoryContent[widget.category] = _cards;
-
+		_cards = await core.getContentCards(widget.category, refresh: refresh);
 		setState(() {});
 	}
 
 	@override
-	Widget build(BuildContext context) =>
+	Widget build(BuildContext context1) =>
 	RefreshIndicator(
-		onRefresh: () => _loadContentCards(),
+		onRefresh: () => _loadContentCards(refresh: true),
 		child: ListView.builder(
 			itemCount: _cards.length + 1,
-			itemBuilder: (BuildContext context, int index) => index == 0 ? Image.asset('assets/images/category_${widget.category}.png') : ContentCard(_cards[index - 1])
+			itemBuilder: (BuildContext context, int index) => index == 0 ? ContentListHeader(widget.category) : ContentCard(_cards[index - 1])
 		));
 }

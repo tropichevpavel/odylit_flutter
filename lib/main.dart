@@ -1,12 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'pages/MainPage.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget
+class MyApp extends StatefulWidget
 {
-	MyApp({Key? key}) : super(key: key) { WidgetsFlutterBinding.ensureInitialized(); }
+	MyApp({super.key}) { WidgetsFlutterBinding.ensureInitialized(); }
 
 	@override
-	Widget build(BuildContext context) => const MaterialApp(home: MainPage() );
+	State<StatefulWidget> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp>
+{
+	@override
+	void initState()
+	{
+		super.initState();
+		SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+	}
+
+	@override
+	Widget build(BuildContext context) => MaterialApp(home: MainPage());
 }

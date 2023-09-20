@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'MainTabView.dart';
 import 'ContentList.dart';
 
 class TabItem
@@ -21,36 +22,11 @@ class TabsView extends StatelessWidget
 		top: 0,
 		right: 0,
 		left: 0,
-		child: Container(
-			width: double.infinity,
-			height: 400,
-			decoration: const 
-			BoxDecoration(
-				image: DecorationImage(
-					image: AssetImage('assets/images/main_header.jpg'),
-					fit: BoxFit.fill
-				)
-			)));
+		child: Image.asset('assets/img/bg_main_head.jpg', width: double.infinity, height: 400, fit: BoxFit.fill));
 
-	List<Widget> _drawTabs()
-	{
-		List<Widget> list = [];
-		for (final tab in tabs)
-		{
-			list.add(Tab(text: tab.name, icon: tab.icon));
-		}
-		return list;
-	}
+	List<Widget> _drawTabs() => tabs.map((tab) => Tab(text: tab.name, icon: tab.icon)).toList();
 
-	Widget _drawTabBarView()
-	{
-		List<Widget> list = [];
-		for (final tab in tabs)
-		{
-			list.add(ContentList(tab.id));
-		}
-		return TabBarView(children: list);
-	}
+	Widget _drawTabBarView() => TabBarView(children: tabs.map((tab) => tab.id == 'main' ? const MainTabView() : ContentList(tab.id)).toList());
 
 	@override
 	Widget build(BuildContext context) =>
@@ -66,6 +42,8 @@ class TabsView extends StatelessWidget
 					dividerColor: Colors.transparent,
 					indicatorColor: const Color(0xFFD6455C),
 					labelColor: const Color(0xFFD6455C),
+					labelPadding: EdgeInsets.zero,
+					labelStyle: const TextStyle(fontSize: 13, fontWeight: FontWeight.normal),
 					unselectedLabelColor: const Color(0xFF949494),
 					tabs: _drawTabs()
 				)),

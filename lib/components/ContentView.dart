@@ -48,8 +48,8 @@ class ContentView extends StatelessWidget
 		margin: const EdgeInsets.only(bottom: 10),
 		child: LinkWell(
 			data.descr!,
-			textAlign: TextAlign.justify, style: TextStyle(fontSize: fontSize - 2, color: Colors.black),
-			linkStyle: TextStyle(fontSize: fontSize - 2, decoration: TextDecoration.underline, color: Colors.blue)))
+			textAlign: TextAlign.justify, style: TextStyle(fontSize: fontSize - 2, height: 1.3, color: Colors.black),
+			linkStyle: TextStyle(fontSize: fontSize - 2, height: 1.3, decoration: TextDecoration.underline, color: Colors.blue)))
 
 	: data.img == null ?
 

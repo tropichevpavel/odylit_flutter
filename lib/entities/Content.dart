@@ -19,7 +19,7 @@ class Content extends Model
 	Content.fromJSON (Map<String, dynamic> json) :
 		id = int.parse(json['id']),
 		title = HtmlUnescape().convert(json['title']),
-		img = (json['img'] != null ? 'https://festapp.ru/lk/Literary_Odyssey/content/${json['img']}.jpg' : null ) ?? json['preview'],
+		img = (json['img'] == null || json['img'].toString().isEmpty ? null : 'https://festapp.ru/lk/Literary_Odyssey/content/${json['img']}.jpg') ?? json['preview'],
 		date = DateTimeExt.fromString(json['timeCreated']),
 		video = json['videolink'] != null ? 'https://rutube.ru/play/embed/${json['videolink']}' : null,
 		descr = json['about'] != null ? HtmlUnescape().convert(json['about']) : '',

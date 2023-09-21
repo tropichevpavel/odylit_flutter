@@ -100,7 +100,7 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
 
-# flutter pub run flutter_launcher_icons:min
+# flutter pub run flutter_launcher_icons:main
 flutter_launcher_icons:
   image_path: 'assets/img/logo.png'
   android: true

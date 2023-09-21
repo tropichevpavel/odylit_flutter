@@ -40,11 +40,7 @@ void showResizebleBottomSheet(BuildContext context, Widget body)
 		{
 			if (!isChange)
 			{
-				WidgetsBinding.instance.addPostFrameCallback((_)
-				{
-					setRigthHeigth(keyContent.currentContext?.size?.height);
-					setStateModal((){});
-				});
+				WidgetsBinding.instance.addPostFrameCallback((_) => setStateModal(() => setRigthHeigth(keyContent.currentContext?.size?.height)));
 			}
 
 			final Size handleSize = Theme.of(context).bottomSheetTheme.dragHandleSize ?? const Size(32, 4);
@@ -82,4 +78,3 @@ void showResizebleBottomSheet(BuildContext context, Widget body)
 				));
 		}));
 }
-// }

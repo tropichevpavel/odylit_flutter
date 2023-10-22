@@ -13,6 +13,7 @@ class Content extends Model
 	String? descr;
 	DateTimeExt date;
 	String? link;
+	String? linkBtn;
 
 	// ContentCard (this.id, this.title, this.mac, this.bind);
 
@@ -23,5 +24,6 @@ class Content extends Model
 		date = DateTimeExt.fromString(json['timeCreated']),
 		video = json['videolink'] != null ? 'https://rutube.ru/play/embed/${json['videolink']}' : null,
 		descr = json['about'] != null ? HtmlUnescape().convert(json['about']) : '',
-		link = json['link'];
+		link = json['link'] ?? (json['quiz'] == null || json['quiz'].toString().isEmpty ? null : json['quiz']),
+		linkBtn = json['quizBt'];
 }

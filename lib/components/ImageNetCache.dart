@@ -5,7 +5,9 @@ class ImageNetCache extends StatefulWidget
 {
 	final String? url;
 	final Function? errorCallback;
-	const ImageNetCache(this.url, { this.errorCallback, super.key });
+	final double? width;
+	final double? height;
+	const ImageNetCache(this.url, { this.width, this.height, this.errorCallback, super.key });
 
 	@override
 	State<StatefulWidget> createState() => _ImageNetCacheState();
@@ -25,8 +27,8 @@ class _ImageNetCacheState extends State<ImageNetCache>
 	@override
 	Widget build(BuildContext context) =>
 	CachedNetworkImage(
-		width: !isError ? MediaQuery.of(context).size.width : 0,
-		height: !isError ? MediaQuery.of(context).size.width * 0.5 : 0,
+		width: !isError ? widget.width ?? double.infinity : 0,
+		height: !isError ? widget.height ?? double.infinity : 0,
 		imageUrl: widget.url ?? '',
 		// progressIndicatorBuilder: (context, url, progress) => CircularProgressIndicator(),
 		errorWidget: onError,

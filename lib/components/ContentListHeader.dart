@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../theme.dart';
+
 class ContentListHeader extends StatelessWidget
 {
 	final String category;
@@ -10,6 +12,6 @@ class ContentListHeader extends StatelessWidget
 	Container(
 		margin: const EdgeInsets.symmetric(vertical: 15),
 		alignment: Alignment.topCenter,
-		child: Image.asset('assets/img/title_$category.png', width: MediaQuery.of(context).size.width * 4 / 5),
+		child: Image.asset('assets/img/title_$category.png', width: theme.getContentWidth(context) * 4 / 5),
 	);
 }

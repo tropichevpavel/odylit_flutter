@@ -17,8 +17,8 @@ const String subHeader = 'О ПРОЕКТЕ';
 const String description = '«Литературная одиссея» — цикл коллажных видео с использованием анимации о фантастическом путешествии современных школьников в прошлое. Дети попадают в дома писателей-классиков русской и советской литературы. Они могут вживую поговорить за чашкой чая с Иваном Тургеневым, отправиться на конную прогулку с Александром Пушкиным, поймать окуня на рыбалке вместе с Константином Паустовским. А самое главное, задать писателям вопросы о секретах их творчества и прочувствовать «гения места» каждого из них.';
 
 const String contactHeader = 'КОНТАКТЫ';
-const String contactPhone = '+7 (903) 770-7590';
-const String contactMail = 'ax@osp.ru';
+const String contactWeb = 'https://classmag.ru';
+const String contactMail = 'lit_odisseya@osp.ru';
 
 const deltaScrollBackgroundOpacity = 200;
 
@@ -105,9 +105,9 @@ class _MainTabViewState extends State<MainTabView>
 								child: const Text(contactHeader, textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.w500))
 							),
 							GestureDetector(
-								onTap: () => launchUrlString('tel:$contactPhone'),
+								onTap: () => launchUrlString(contactWeb),
 								child: const
-								Text('$contactPhone\n', style: TextStyle(color: Colors.blue, decoration: TextDecoration.underline))),
+								Text('$contactWeb\n', style: TextStyle(color: Colors.blue, decoration: TextDecoration.underline))),
 							GestureDetector(
 								onTap: () => launchUrlString('mailto:$contactMail'),
 								child: const
@@ -120,12 +120,11 @@ class _MainTabViewState extends State<MainTabView>
 	@override
 	Widget build(BuildContext context) =>
 	Stack(
-			children: [
-				
-				Positioned.fill(
-					child: Container(
-		margin: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-		child: const ContentListHeader('main'))),
+		children: [
+			Positioned.fill(
+				child: Container(
+					margin: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+					child: const ContentListHeader('main'))),
 				Container(
 					decoration: BoxDecoration (color: Colors.white.withOpacity(_backgrountOpacity)),
 					child: NotificationListener(

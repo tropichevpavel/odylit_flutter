@@ -45,29 +45,32 @@ class TabsView extends StatelessWidget
 		}
 
 		return
-		DefaultTabController(
-			initialIndex: 0,
-			length: tabs.length,
-			child: Scaffold(
-				backgroundColor: Colors.white,
-				bottomNavigationBar: 
-				Container(
-					key: keyContent,
-					margin: EdgeInsets.symmetric(horizontal: utils.isTablet(context) ? (MediaQuery.of(context).size.width / 4) : 0),
-					color: Colors.white,
-					child: TabBar(
-						dividerColor: Colors.transparent,
-						indicatorColor: const Color(0xFFD6455C),
-						labelColor: const Color(0xFFD6455C),
-						labelPadding: EdgeInsets.zero,
-						labelStyle: const TextStyle(fontSize: 13, fontWeight: FontWeight.normal),
-						unselectedLabelColor: const Color(0xFF949494),
-						tabs: _drawTabs()
-					)),
-				body: Stack(
-					children: [
-						_drawBackgroungHeader(context),
-						_drawTabBarView()
-					])));
+		ScrollConfiguration(
+			behavior: ScrollBehaviorNoGlow(),
+			child:
+			DefaultTabController(
+				initialIndex: 0,
+				length: tabs.length,
+				child: Scaffold(
+					backgroundColor: Colors.white,
+					bottomNavigationBar: 
+					Container(
+						key: keyContent,
+						margin: EdgeInsets.symmetric(horizontal: utils.isTablet(context) ? (MediaQuery.of(context).size.width / 4) : 0),
+						color: Colors.white,
+						child: TabBar(
+							dividerColor: Colors.transparent,
+							indicatorColor: const Color(0xFFD6455C),
+							labelColor: const Color(0xFFD6455C),
+							labelPadding: EdgeInsets.zero,
+							labelStyle: const TextStyle(fontSize: 13, fontWeight: FontWeight.normal),
+							unselectedLabelColor: const Color(0xFF949494),
+							tabs: _drawTabs()
+						)),
+					body: Stack(
+						children: [
+							_drawBackgroungHeader(context),
+							_drawTabBarView()
+						]))));
 	});
 }

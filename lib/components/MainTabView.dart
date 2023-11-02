@@ -19,6 +19,8 @@ const String description = '«Литературная одиссея» — ци
 const String contactHeader = 'КОНТАКТЫ';
 const String contactWeb = 'https://classmag.ru';
 const String contactMail = 'lit_odisseya@osp.ru';
+const String policyLabel = 'Политика конденфициальности';
+const String policy = 'http://festapp.ru/lk/Literary_Odyssey/policy.html';
 
 const deltaScrollBackgroundOpacity = 200;
 
@@ -111,7 +113,11 @@ class _MainTabViewState extends State<MainTabView>
 							GestureDetector(
 								onTap: () => launchUrlString('mailto:$contactMail'),
 								child: const
-								Text(contactMail, style: TextStyle(color: Colors.blue, decoration: TextDecoration.underline))),
+								Text('$contactMail\n', style: TextStyle(color: Colors.blue, decoration: TextDecoration.underline))),
+							// GestureDetector(
+							// 	onTap: () => launchUrlString(policy),
+							// 	child:
+							// 	Text(policyLabel, style: TextStyle(color: Colors.grey[400], decoration: TextDecoration.underline))),
 						])
 				)),
 				Image.asset('assets/img/children.png', width: theme.getContentWidth(context) * 1 / 4),

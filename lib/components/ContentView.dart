@@ -47,10 +47,10 @@ class ContentView extends StatelessWidget
 		alignment: Alignment.center,
 		child: TextWithMinLines(
 			data.title,
-			minLines: isFull || !utils.isTablet(context) ? 1 : 3,
+			minLines: isFull ? 0 : utils.isTablet(context) ? 3 : 1,
 			maxLines: isFull ? null : 3,
 			textAlign: TextAlign.center,
-			overflow: TextOverflow.ellipsis,
+			overflow: isFull ? null : TextOverflow.ellipsis,
 			style: TextStyle(height: 1.2, fontSize: fontSize, fontWeight: FontWeight.bold)));
 
 
